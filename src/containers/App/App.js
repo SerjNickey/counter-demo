@@ -1,8 +1,8 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { add, sub } from '../../actions/counterActions'
-import Counter from '../../components/Counter/Counter'
-import { getCounter } from '../../selectors/counterSelectors'
+import React from 'react';
+import { connect } from 'react-redux';
+import { add, sub, addAsync, subAsync } from '../../actions/counterActions';
+import Counter from '../../components/Counter/Counter';
+import { getCounter } from '../../selectors/counterSelectors';
 
 
 const App = (props) => (
@@ -10,8 +10,10 @@ const App = (props) => (
     counter={props.counter} 
     onAdd={props.onAdd} 
     onSub={props.onSub} 
+    onAddAsync={props.onAddAsync}
+    onSubAsync={props.onSubAsync}
   />
-)
+);
 
 
 function mapStateToProps(state) {
@@ -22,10 +24,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {    
-    onAdd: () => dispatch(add()),
-    onSub: () => dispatch(sub())
+    onAdd: () => dispatch(add(1)),
+    onSub: () => dispatch(sub(1)),
+    onAddAsync: () => dispatch(addAsync()),
+    onSubAsync: () => dispatch(subAsync())
   }  
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,11 +1,11 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 
 export const getCounter = (state) => {
-  return state.counter
+  return state.counter;
 }
 
 export const getCounterSuperSelector = createSelector(getCounter, (counter) => {
-  return counter
+  return counter;
 })
 

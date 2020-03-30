@@ -1,4 +1,5 @@
-import { add, sub } from '../actions/counterActions'
+//import { add, sub } from '../actions/counterActions';
+import * as constants from '../utils/constants/counterConstants';
 
 
 const initialState = {
@@ -7,15 +8,17 @@ const initialState = {
   
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case add.TRIGGER:
+    //case add.TRIGGER:
+    case constants.ADD:
       return {
         ...state,
-        counter: state.counter + 1
+        counter: state.counter + action.payload
       }
-    case sub.TRIGGER:
+    //case sub.TRIGGER:
+    case constants.SUB:
       return {
         ...state,
-        counter: state.counter - 1
+        counter: state.counter - action.payload
       }      
     default:
       return state
@@ -23,4 +26,4 @@ const counterReducer = (state = initialState, action) => {
 }
 
 
-export default counterReducer
+export default counterReducer;
